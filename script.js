@@ -10,13 +10,19 @@ var userInitials = document.querySelector("#initials");
 var submitBtn = document.querySelector(".submit-button");
 var allHighscores = document.querySelector(".highscorePage");
 
+var answer1 = document.querySelector("#answer1");
+var answer2 = doucment.querySelector("#answer2");
+var answer3 = document.querySelector("#answer3");
+var answer4 = document.querySelector("#answer4");
+
 var score = 0;
+var questionCount = 0;
 var timeGiven = 75;
 var timerInterval;
 
 startBtn.addEventListener("click", startGame);
 
-var questions = [ {
+const questions = [ {
     title: "Commonly used datatypes do NOT include:",
     choices: ["strings", "booleans", "alerts", "numbers"],
     answer: "alerts"
@@ -48,13 +54,27 @@ function startGame() {
     questionsEl.classList.remove("hide")
     startTimer();
     showQuestions();
-}
+};
 
 function startTimer() {
-    // timerEl.textContent = timeGiven;
     timer = setInterval(function() {
         timeGiven --
-        timerEl.textContent = timeGiven;
-        // timerEl.textContent = secondsleft + " seconds remaining";
+        timerEl.textContent = timeGiven + " seconds remaining";
+        if (timeGiven === 0 || questionCount === questions.length) {
+            endQuiz();
+        }
     }, 1000);
+};
+
+function endQuiz() {
+    finalScore.textContent = timeGiven;
+    clearInterval(timerInterval);
+}
+
+function showQuestions() {
+    quizQuestions.textContent = questions.title;
+    answer1.textContent = questions.choices[0];
+    answer2.textContent = questions.choices[1];
+    answer3.textContent = questions.choices[2];
+    answer4.textContent = questions.choices[3];
 }
