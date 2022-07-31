@@ -33,19 +33,22 @@
           </ol>
       </section>
       
-      <section class = "hide">
-        <div id = "score">
-          <p>Your final score is:</p>
+      <section id = "quiz-end" class = "hide">
+          <p>Your final score is: <span id = "score"></span></p>
         </div>
         <form id = "initals">
-          <p>Please enter your initials:</p>
+          <p>Please enter your initials:<input type = "name" name = "name" id = "name"></p>
           <button class="submit-button">Submit</button>
         </form>
       </section>  
 
-      <section class = "hide">
-        <div class = "highscorePage">View HighScores</div>
+      <section id = "highscore-view" class = "hide">
+        <div id = "highscorePage">
         <h1>Highscores</h1>
+          <div id = "diff-initials"></div>
+          <div id = "diff-scores"></div>
+        </div>
+        <div class = "score-list"></div>
         <button class = "clear-scores">Clear Scores</button>
         <button class = "go-back">Go Back</button>
       </section>
