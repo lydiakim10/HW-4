@@ -1,3 +1,4 @@
+// Variables, Query Selectors, and Event Listeners
 var startBtn = document.querySelector(".start-button");
 var quizStart = document.querySelector(".start-quiz"); 
 var highscoresEl = document.querySelector(".highscores");
@@ -36,6 +37,7 @@ answer2.addEventListener("click", checkAnswer);
 answer3.addEventListener("click", checkAnswer);
 answer4.addEventListener("click", checkAnswer);
 
+// Five Questions to be presented
 var questions = [ {
     title: "Commonly used datatypes do NOT include:",
     choices: ["strings", "booleans", "alerts", "numbers"],
@@ -63,6 +65,7 @@ var questions = [ {
 },
 ];
 
+// If user clicks "Start Game"
 function startGame() {
     quizStart.classList.add("hide");
     questionsEl.classList.remove("hide");
@@ -70,6 +73,7 @@ function startGame() {
     showQuestions();
 };
 
+// Timer starts counting down
 function startTimer() {
     timer = setInterval(function() {
         timeGiven --
@@ -80,6 +84,7 @@ function startTimer() {
     }, 1000);
 };
 
+// Questions and Answers being presented
 function showQuestions() {
     var questionShow = questions[questionNumber];
     if (questionNumber === questions.length) {
@@ -93,6 +98,7 @@ function showQuestions() {
     }
 };
 
+// If answer choice is chosen incorrectly, time is deducted by 5 seconds
 function checkAnswer(event) {
     var chosenAnswer = event.target;
     if (chosenAnswer.textContent === questions[questionCount].answer) {
@@ -105,6 +111,7 @@ function checkAnswer(event) {
     }
 };
 
+// When all questions are answered or time runs out
 function endQuiz() {
     questionsEl.classList.add("hide");
     quizEnd.classList.remove("hide");
@@ -113,6 +120,7 @@ function endQuiz() {
     clearInterval(timer);
 };
 
+// When "Submit" button is clicked
 submitBtn.addEventListener("click", scoreSave);
 function scoreSave(event) {
     event.preventDefault();
@@ -128,6 +136,7 @@ function scoreSave(event) {
     generateHighscores();
 };
 
+// Showing all Highscores
 function generateHighscores() {
     highscoreName.innerHTML = "";
     highscoreScore.innerHTML = "";
@@ -139,6 +148,7 @@ function generateHighscores() {
     };
 }
 
+// When "Go Back" button is clicked
 goBack.addEventListener("click", back);
 function back() {
     allHighscores.classList.add("hide");
@@ -149,6 +159,7 @@ function back() {
     timerEl.style.display = "flex";
 };
 
+// When "Clear Button" is clicked
 scoreClear.addEventListener("click", clearScore);
 function clearScore() {
     window.localStorage.clear();
@@ -156,6 +167,7 @@ function clearScore() {
     highscoreScore.textContent = "";
 };
 
+// When "View Highscores" button is clicked
 highscoresEl.addEventListener("click", showScores);
 function showScores() {
     allHighscores.classList.remove("hide");
